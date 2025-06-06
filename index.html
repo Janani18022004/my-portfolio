@@ -1,0 +1,635 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  
+    <style>
+      /* Global Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+  
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+  
+      html {
+        scroll-behavior: smooth;
+      }
+  
+      /* Navbar */
+      .navbar {
+        background-color: #4a154b;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+  
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .nav-content h1 {
+        color: white;
+        font-size: 1.5rem;
+      }
+  
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+  
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s;
+      }
+  
+      .nav-links a:hover {
+        color: #ddd;
+      }
+  
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: white;
+        transition: width 0.3s;
+      }
+  
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+  
+      /* Sections */
+      section {
+        padding: 5rem 0;
+      }
+  
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+  
+      /* About Section */
+      .about-section {
+        margin-top: 4rem;
+        text-align: center;
+      }
+  
+      .profile-photo {
+        width: 300px;
+        height: 450px;
+        object-fit: cover;
+        margin-bottom: 2rem;
+        border: 4px solid #4a154b;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 15px;
+        animation: scaleIn 1s ease-out;
+      }
+  
+      .about-section h2,
+      .about-section h3 {
+        animation: fadeInUp 0.8s ease-out;
+      }
+  
+      .about-section h2 {
+        color: #4a154b;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      .about-section h3 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #333;
+      }
+  
+      .about-content p {
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-out 0.2s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
+  
+      /* Education & Projects */
+      .education-items,
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+  
+      .edu-item,
+      .project-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        animation: slideInLeft 0.8s ease-out;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
+  
+      .edu-item:nth-child(2),
+      .project-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+  
+      .project-card h3 {
+        color: #4a154b;
+        margin-bottom: 1rem;
+      }
+  
+      .tech-stack {
+        color: #666;
+        margin-top: 1rem;
+        font-style: italic;
+      }
+  
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+  
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+  
+      .skill-item {
+        background: #4a154b;
+        color: white;
+        padding: 1rem;
+        border-radius: 5px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: scaleIn 0.6s ease-out;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
+  
+      .skill-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+  
+      .skill-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .skill-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .skill-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .skill-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .skill-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .skill-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .skill-item:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+      .skill-item:nth-child(8) {
+        animation-delay: 0.8s;
+      }
+  
+      /* Certifications Section */
+      .certifications-section {
+        padding: 40px;
+        background-color: #f4f8fc;
+        text-align: center;
+      }
+  
+      .certifications-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+  
+      .cert-item {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+      }
+  
+      .skill-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #0077b6;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+  
+      .skill-title:hover {
+        color: #023e8a;
+        text-decoration: underline;
+      }
+  
+      /* Contact Section */
+      .contact-section {
+        background: white;
+        text-align: center;
+      }
+  
+      .contact-info {
+        margin-top: 2rem;
+      }
+  
+      .contact-info p {
+        margin: 1rem 0;
+      }
+  
+      .social-links {
+        margin-top: 2rem;
+      }
+  
+      .social-links a {
+        color: #4a154b;
+        font-size: 2rem;
+        margin: 0 1rem;
+        transition: color 0.3s;
+        animation: scaleIn 0.5s ease-out;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
+  
+      .social-links a:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+  
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+  
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+  
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+  
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-content {
+          flex-direction: column;
+          text-align: center;
+          padding: 1rem;
+        }
+  
+        .nav-links {
+          margin-top: 1rem;
+          flex-direction: column;
+          gap: 1rem;
+        }
+  
+        section {
+          padding: 3rem 0;
+        }
+  
+        .about-section {
+          margin-top: 6rem;
+        }
+      }
+  
+      /* Your added section-box styles */
+      .section-box {
+        padding: 40px 20px;
+        background-color: #fff;
+        margin: 2rem auto;
+        border-radius: 10px;
+        max-width: 800px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+  
+      .section-box h2 {
+        text-align: center;
+        color: #4a154b;
+        margin-bottom: 1.5rem;
+      }
+  
+      .box-content {
+        padding: 1rem 2rem;
+      }
+  
+      .activity-list {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        font-size: 1.1rem;
+        color: #333;
+      }
+  
+      .activity-list li {
+        margin-bottom: 1rem;
+      }
+  
+      /* Added style for Achievements skill item */
+      .Achievements .skill-item {
+        background: #4a154b;  /* Background color */
+        color: white;         /* Text color */
+        padding: 0.5rem 1rem; /* சற்று உள்ளே இடம் */
+        border-radius: 5px;   /* வட்டமான மூலைகள் */
+        text-align: center;   /* நடுவில் எழுத்து */
+        max-width: 400px;     /* அகலம் கட்டுப்பாடு */
+        margin: 1rem auto;    /* நடுவில் வர */
+        font-size: inherit;   /* பிண்ட்சைஸ் default-ஆ இருக்க */
+        transition: transform 0.3s, box-shadow 0.3s;
+        opacity: 1;
+        animation-fill-mode: forwards;
+      }
+    </style>
+  </head>
+  
+
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <h1>JANANI M</h1>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <img src="photo.jpeg" alt="Janani M" class="profile-photo">
+            <h2>ABOUT ME</h2>
+            <div class="about-content">
+                <p>Hello! I'm Janani, an aspiring front-end developer with strong technical skills in programming and a keen interest in data structures and algorithms. Passionate about software design and problem-solving, I'm seeking opportunities to apply my knowledge in real-world applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education-section">
+        <div class="container">
+            <h2>EDUCATION</h2>
+            <div class="education-items">
+                <div class="edu-item">
+                    <h3>B.Tech in Information Technology</h3>
+                    <p>M.Kumarasamy College of Engineering, Karur</p>
+                    <p>CGPA: 7.38</p>
+                    <p class="year">2022 - 2026</p>
+                </div>
+                <div class="edu-item">
+                    <h3>Higher Secondary Education</h3>
+                    <p>Bharani Park Matric Higher Secondary School, Karur</p>
+                    <p>Percentage: 70%</p>
+                    <p class="year">2020 - 2021</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>MY PROJECTS</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Smart Canteen</h3>
+                    <p>A web-based food ordering system that simplifies and speeds up the canteen service process.</p>
+                    <p class="tech-stack">HTML, CSS, PHP, MySQL</p>
+                </div>
+                <div class="project-card">
+                    <h3>Diabetes Prediction</h3>
+                    <p>Machine learning model using Random Forest algorithm to predict diabetes based on HbA1c levels.</p>
+                    <p class="tech-stack">Python, MySQL, Wamp Server</p>
+                </div>
+                <div class="project-card">
+                    <h3>AI-Based Skin Cancer Lesion Detection</h3>
+                    <p>Developed a web app to detect skin cancer using a pre-trained deep learning model, classifying lesions with probability scores. Future upgrades include webcam-based detection and batch image processing.
+                    </p>
+                    <p class="tech-stack"> Streamlit, Python, Keras, Generative AI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2>MY SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png" alt="Python" width="40"><br>
+                    Python
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java" width="40"><br>
+                    Java
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968342.png" alt="DSA" width="40"><br>
+                    Data Structures
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="SQL" width="40"><br>
+                    SQL
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="MySQL" width="40"><br>
+                    MySQL
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2103/2103865.png" alt="ML" width="40"><br>
+                    Machine Learning
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="Web Dev" width="40"><br>
+                    Web Development
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/873/873120.png" alt="AWS" width="40"><br>
+                    AWS
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="certifications" class="certifications-section">
+        <div class="container">
+          <h2>MY Certifications</h2>
+          <div class="certifications-list">
+      
+            <div class="certifications-list">
+
+                
+      <div class="cert-item">
+        <a href="https://drive.google.com/file/d/1n-BZgYV9AYS4A3-A31Q1GSO-OPfrc7tt/view?usp=sharing" target="_blank" class="skill-title">
+          AWS Certified Cloud Practitioner
+        </a>
+
+        <p>
+          Certificate Validation At: 
+          <a href="https://aws.amazon.com/verification" target="_blank" style="color:#0077b6; text-decoration: underline;">
+            https://aws.amazon.com/verification
+          </a>
+        </p>
+
+        <p>
+            Certificate Validation No: 
+            <span style="color:#0077b6;">
+              5e3b0308e96e4ba8a45691eb6fa85d01
+            </span>
+          </p>
+          
+          
+
+        <p>
+          GitHub Repository: 
+          <a href="https://github.com/Janani18022004/Aws-cloud" target="_blank" style="color:#0077b6; text-decoration: underline;">
+            https://github.com/Janani18022004/Aws-cloud
+          </a>
+        </p>
+      </div>
+      
+            <div class="cert-item">
+              <a href="https://drive.google.com/file/d/1H8K9YnI15fUg-NSq3pTAxdedespAFhpH/view?usp=sharing" target="_blank" class="skill-title">
+                NPTEL - Programming in Java
+              </a>
+            </div>
+      
+            <div class="cert-item">
+              <a href="https://drive.google.com/file/d/19ohC_J2n_hWOalW09S04aebF6TtP0sw-/view?usp=sharing" target="_blank" class="skill-title">
+                NPTEL - Industry 4.0 & IIoT
+              </a>
+            </div>
+      
+            <div class="cert-item">
+              <a href="https://drive.google.com/file/d/1GnbSi9Tp-8ORs2xYX-DBgT6Hc3eRU5Un/view?usp=sharing" target="_blank" class="skill-title">
+                Python Zero to Hero
+              </a>
+            </div>
+      
+            <div class="cert-item">
+              <a href="https://drive.google.com/file/d/1xg9eVrYgpeDPbKOY6C9COX_iZD7HuWF8/view?usp=sharing" target="_blank" class="skill-title">
+                Oracle JavaScript Essentials
+              </a>
+            </div>
+      
+            <div class="cert-item">
+              <a href="https://drive.google.com/file/d/1oSzsFgPtoTeq_p19O7GrBfAz255RjKrm/view?usp=sharing" target="_blank" class="skill-title">
+                Junior Cybersecurity Analyst - Cisco
+              </a>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+
+      <section id="Achievements" class="Achievements">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <h2>MY Achievements</h2>
+          <div class="skill-item" style="
+            background: #4a154b; 
+            color: white; 
+            padding: 0.5rem 1rem; 
+            border-radius: 5px; 
+            max-width: 400px; 
+            margin: 1rem auto; 
+            font-size: inherit;
+            ">
+            National-level recognition in Yoga
+          </div>
+        </div>
+      </section>
+      
+
+    <section id="co-curricular" class="section-box">
+        <div class="container">
+            <h2>MY Activities</h2>
+            <div class="box-content">
+                <ul class="activity-list">
+                    <li>President of Department Association</li>
+                    <li>Participated in National Level Symposium</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>CONTACT ME</h2>
+            <p>Feel free to reach out for collaborations or just a friendly chat!</p>
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> +9489290294</p>
+                <p><i class="fas fa-envelope"></i> janukarur0908@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Tamil Nadu</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/janani-muruganandam-23876132a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Janani18022004" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
